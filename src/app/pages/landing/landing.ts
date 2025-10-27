@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class LandingPageComponent {
 
   // Imagen hero local
-  heroImageUrl = 'nina_terapia.png';
+  heroImageUrl = 'tera/nina_ent.jpg';
 
   constructor(private router: Router) {}
 

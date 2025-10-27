@@ -7,12 +7,15 @@ import { Contacto } from '../pages/contacto/contacto';
 import { Equipo } from '../pages/equipo/equipo';
 import { Ventas } from '../pages/ventas/ventas';
 import { Donar } from '../pages/donar/donar';
+import { Login } from '../pages/login/login';
 
 export const HEADER_ROUTES: Routes = [
   { path: 'servicios', component: ServiciosComponent },
   { path: 'contacto', component: Contacto },
   { path: 'equipo', component: Equipo },
   { path: 'ventas', component: Ventas },
-{ path: 'donar', component: Donar }
+{ path: 'donar', component: Donar },
+{ path: 'login', component: Login }
+
 
 ];
