@@ -1,23 +1,25 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; // Esto permite usar routerLink
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule, RouterModule], // ⚡ Importante agregar RouterModule
   templateUrl: './header.html',
   styleUrls: ['./header.scss']
 })
 export class HeaderComponent {
   menuAbierto = false;
 
-  // Abre o cierra el menú
   toggleMenu() {
     this.menuAbierto = !this.menuAbierto;
+    const btn = document.querySelector('.menu-toggle');
+    if (btn) {
+      btn.classList.toggle('active', this.menuAbierto);
+    }
   }
 
-  // Cierra el menú al hacer clic en un enlace
   cerrarMenu() {
     this.menuAbierto = false;
   }
