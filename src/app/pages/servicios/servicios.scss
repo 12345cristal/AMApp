@@ -1,0 +1,122 @@
+.autismo-mochis-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  color: #1f2937;
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 0.3rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #10b981;
+    }
+  }
+
+  p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  .founder {
+    background: #e0f2fe;
+    border-left: 4px solid #3b82f6;
+    padding: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .mission-vision {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    .mission, .vision {
+      flex: 1;
+      background: #f9fafb;
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+      h3 {
+        color: #f59e0b;
+        font-size: 1.3rem;
+        margin-bottom: 0.7rem;
+      }
+    }
+  }
+
+  .values {
+    background: #ecfdf5;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+
+    h3 {
+      color: #10b981;
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+
+    ul {
+      list-style-type: '💙 ';
+      padding-left: 1rem;
+      li {
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .history {
+    h3 {
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+  }
+
+  .cta {
+    text-align: center;
+    margin-top: 2rem;
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #374151;
+    }
+
+    .donate-button {
+      background-color: #f59e0b;
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+
+      &:hover {
+        background-color: #d97706;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
