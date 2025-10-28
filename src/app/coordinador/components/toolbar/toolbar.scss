@@ -1,0 +1,22 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 0.8rem 1.2rem;
+}
+
+.toolbar-right button {
+  margin-left: 0.5rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.toolbar-right button:hover {
+  background: #1e40af;
+}

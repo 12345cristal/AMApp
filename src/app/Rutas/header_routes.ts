@@ -33,7 +33,4 @@ export const HEADER_ROUTES: Routes = [
 
   // Ruta por defecto
   { path: '', redirectTo: 'servicios', pathMatch: 'full' },
-
-  // Ruta comodín (para 404)
-  { path: '**', redirectTo: 'servicios' }
 ];
