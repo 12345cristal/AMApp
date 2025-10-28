@@ -1,13 +1,11 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from '../../../shared/header/header';
-import { FooterComponent } from '../../../shared/footer/footer';
 
 @Component({
   selector: 'app-deposito',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './deposito.html',
   styleUrls: ['./deposito.scss'],
   encapsulation: ViewEncapsulation.None // Para que el fondo y estilos full-screen funcionen

@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HeaderComponent } from '../../../shared/header/header';
-import { FooterComponent } from '../../../shared/footer/footer';
 
 @Component({
   selector: 'app-paypal',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './paypal.html',
   styleUrls: ['./paypal.scss']
 })
