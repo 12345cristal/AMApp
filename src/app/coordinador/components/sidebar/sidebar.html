@@ -1,13 +1,89 @@
-<nav class="sidebar" [class.open]="menuVisible">
-  <div class="sidebar-header">
-    <h2>Coordinador</h2>
-    <button class="toggle-btn" (click)="toggleMenu()">☰</button>
+<header class="toolbar">
+  <div class="toolbar-left">
+    <!-- Botón hamburguesa tablet/laptop mediana -->
+    <button class="toggle-btn-desktop" (click)="toggleMenu()" aria-label="Menú">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <h1 (click)="openSidebar()">Autismo Mochis</h1>
   </div>
 
-  <div class="sidebar-links">
-    <a routerLink="/coordinador/inicio">🏠 Inicio</a>
-    <a href="#">👥 Terapeutas</a>
-    <a href="#">👨‍👩‍👧 Padres</a>
-    <a href="#">⚙️ Configuración</a>
+  <div class="toolbar-right">
+    <button class="icon-btn notification-btn">
+      🔔 <span class="badge">3</span>
+    </button>
+    <button class="icon-btn">Perfil</button>
   </div>
-</nav>
+</header>
+
+<!-- Sidebar -->
+<div class="sidebar" [class.open]="menuVisible">
+  <!-- Overlay tablet/móvil -->
+  <div class="sidebar-overlay" (click)="closeSidebar()"></div>
+
+  <div class="sidebar-content">
+    <!-- Header Sidebar -->
+    <div class="sidebar-header">
+      <img src="autismo_mochis.png" alt="Autismo Mochis" class="sidebar-logo">
+      <span class="sidebar-title">Coordinador</span>
+      <!-- Solo visible móvil -->
+      <button class="close-sidebar-btn" (click)="closeSidebar()">×</button>
+    </div>
+
+    <div class="sidebar-scroll">
+      <!-- Panel Principal -->
+      <div class="sidebar-section" [class.open]="panelPrincipalOpen">
+        <div class="section-title" (click)="panelPrincipalOpen = !panelPrincipalOpen">
+          Panel principal <span>{{ panelPrincipalOpen ? '▲' : '▼' }}</span>
+        </div>
+        <div class="sidebar-links">
+          <a routerLink="/coordinador/inicio">🏠 Inicio</a>
+          <a href="#">📅 Citas</a>
+          <a href="#">👥 Terapeutas</a>
+        </div>
+      </div>
+
+      <!-- Gestión Clínica -->
+      <div class="sidebar-section" [class.open]="gestionClinicaOpen">
+        <div class="section-title" (click)="gestionClinicaOpen = !gestionClinicaOpen">
+          Gestión clínica <span>{{ gestionClinicaOpen ? '▲' : '▼' }}</span>
+        </div>
+        <div class="sidebar-links">
+          <a href="#">👨‍👩‍👧 Padres</a>
+          <a href="#">📘 Recursos</a>
+          <a href="#">💬 Mensajes</a>
+          <a href="#">🩺 Parte clínica</a>
+          <a href="#">🕓 Horarios</a>
+          <a href="#">📂 Expedientes clínicos</a>
+        </div>
+      </div>
+
+      <!-- Administración -->
+      <div class="sidebar-section" [class.open]="administracionOpen">
+        <div class="section-title" (click)="administracionOpen = !administracionOpen">
+          Administración <span>{{ administracionOpen ? '▲' : '▼' }}</span>
+        </div>
+        <div class="sidebar-links">
+          <a href="#">🔒 Filtros de acceso</a>
+          <a href="#">➕ Nuevo beneficiario</a>
+          <a href="#">👤 Usuarios</a>
+          <a href="#">📊 Reportes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="#">⚙️ Configuración</a>
+      <a href="#" class="logout">🚪 Cerrar sesión</a>
+    </div>
+  </div>
+</div>
+
+<!-- Botón global móvil (<768px) -->
+<!-- <button class="global-toggle-btn" (click)="toggleMenu()" aria-label="Menú móvil">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button> -->
