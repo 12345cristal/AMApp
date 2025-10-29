@@ -30,8 +30,8 @@ export class SidebarComponent {
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     const width = (event.target as Window).innerWidth;
-    if (width > 1024) this.menuVisible = true;  // desktop grande
-    if (width <= 1024 && width >= 768) this.menuVisible = false; // tablet/laptop mediana
-    if (width < 768) this.menuVisible = false; // móvil
-  }
+ if (width > 1024) this.menuVisible = true; // desktop grande
+if (width <= 1024 && width >= 768) this.menuVisible = true; // tablet/laptop mediana
+if (width < 768) this.menuVisible = false; // móvil
+ }
 }

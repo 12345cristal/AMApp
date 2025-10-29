@@ -8,6 +8,21 @@
   color: #333;
 }
 
+.layout-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ==============================
    TOOLBAR SUPERIOR
 ============================== */
@@ -23,7 +38,7 @@
   align-items: center;
   padding: 0 1.5rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  z-index: 200;
+  z-index: 400;
 
   .toolbar-left {
     display: flex;
@@ -36,7 +51,6 @@
       cursor: pointer;
       margin: 0;
       font-weight: 600;
-
       &:hover {
         color: #3d7cb2;
       }
@@ -107,20 +121,16 @@
   left: 0;
   width: 230px;
   height: calc(100vh - 60px);
-  background: linear-gradient(180deg, #3b7ca6, #2e5e85);
-  color: #fff;
+  z-index: 300;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  z-index: 150;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(180deg, #3b7ca6, #2e5e85);
+  color: #fff;
 
   &.open {
     transform: translateX(0);
-  }
-
-  .sidebar-overlay {
-    display: none;
   }
 
   .sidebar-content {
@@ -128,6 +138,13 @@
     flex-direction: column;
     height: 100%;
     overflow: hidden;
+  }
+
+  .sidebar-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.8rem 0.5rem;
+    pointer-events: auto;
   }
 
   .sidebar-header {
@@ -160,12 +177,6 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-  }
-
-  .sidebar-scroll {
-    flex: 1;
-    overflow-y: auto;
-    padding: 0.8rem 0.5rem;
   }
 
   .sidebar-section {
@@ -233,36 +244,48 @@
   }
 }
 
-/* ==============================
-   BOTÓN GLOBAL MÓVIL
-============================== */
-.global-toggle-btn {
+/* overlay móvil */
+.sidebar-overlay {
   display: none;
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #3b7ca6;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 250; /* debajo del sidebar pero encima de main */
+  pointer-events: auto;
+}
+
+/* ==============================
+   INICIO
+============================== */
+.inicio-container {
+  flex: 1;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 250;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  margin-top: 60px; /* espacio toolbar */
+  text-align: center;
+}
 
-  .bar {
-    width: 22px;
-    height: 2px;
-    background: #fff;
-  }
+.inicio-container h2 {
+  color: #2563eb;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-  &:hover {
-    background: #316b8f;
-  }
+.inicio-container p {
+  color: #555;
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
 /* ==============================
@@ -282,28 +305,54 @@
 /* ==============================
    RESPONSIVE
 ============================== */
-@media (max-width: 768px) {
-  .toolbar h1 {
-    font-size: 1rem;
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(0); /* tablet siempre visible */
+    width: 220px;
   }
+}
 
+@media (max-width: 768px) {
   .sidebar {
     width: 200px;
+    z-index: 300;
+  }
 
-    .sidebar-overlay {
-      display: block;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 140;
-    }
+  .sidebar.open + .sidebar-overlay {
+    display: block; /* overlay solo visible cuando sidebar abierto */
+  }
 
-    .close-sidebar-btn {
-      display: block;
-    }
+  .close-sidebar-btn {
+    display: block;
   }
 
   .global-toggle-btn {
     display: flex;
+  }
+
+  .inicio-container {
+    padding: 1rem;
+  }
+
+  .inicio-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .inicio-container p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .inicio-container {
+    padding: 0.8rem;
+  }
+
+  .inicio-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .inicio-container p {
+    font-size: 0.9rem;
   }
 }

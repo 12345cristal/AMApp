@@ -23,6 +23,6 @@ export class LayoutComponent {
   }
 
   private checkScreenWidth() {
-    this.sidebarOpen = window.innerWidth > 768; // solo muestra sidebar fijo en pantallas grandes
+    this.sidebarOpen = window.innerWidth > 768;
   }
 }

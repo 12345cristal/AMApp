@@ -1,8 +1,10 @@
-<div class="layout-container">
+<div class="layout-container" [class.sidebar-open]="sidebarOpen">
+  <!-- Sidebar -->
   <app-sidebar></app-sidebar>
 
-  <div class="main-content" [class.sidebar-open]="sidebarOpen">
+  <div class="main-content">
     <div class="page-content">
+      <!-- Aquí carga InicioComponent u otros componentes -->
       <router-outlet></router-outlet>
     </div>
   </div>

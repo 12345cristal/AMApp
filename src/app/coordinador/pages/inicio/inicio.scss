@@ -1,20 +1,18 @@
-/* Contenedor principal que ocupa toda la pantalla */
 .inicio-container {
-  position: relative;
-  background: #ffffff;
-  width: 100%;
-  height: 100vh;
+  flex: 1; /* ocupa todo el espacio del main-content */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
   padding: 2rem;
-  overflow: hidden;
+  box-sizing: border-box;
+  background: #ffffff;
+  width: 100%;
+  height: 100%; /* ocupa toda la altura del contenedor padre */
+  overflow: hidden; /* elimina scroll */
+  transition: all 0.3s ease;
 }
 
-/* Título principal */
 h2 {
   color: #2563eb;
   margin-bottom: 1rem;
@@ -23,7 +21,6 @@ h2 {
   text-align: center;
 }
 
-/* Texto descriptivo */
 p {
   color: #555;
   font-size: 1.1rem;
@@ -33,34 +30,11 @@ p {
 }
 
 /* ===========================
-   Ajuste cuando sidebar cambia
-=========================== */
-.layout-container {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Sidebar expandido (por defecto) */
-.sidebar-expanded .inicio-container {
-  margin-left: 260px; /* ancho del sidebar */
-  width: calc(100% - 260px);
-}
-
-/* Sidebar colapsado o cerrado */
-.sidebar-collapsed .inicio-container {
-  margin-left: 0;
-  width: 100%;
-}
-
-/* ===========================
    Responsividad
 =========================== */
 @media (max-width: 1024px) {
-  .sidebar-expanded .inicio-container {
-    margin-left: 0; /* sidebar oculto en tablet */
-    width: 100%;
+  .inicio-container {
+    padding: 1.5rem;
   }
 
   h2 {
