@@ -252,11 +252,24 @@
   background: rgba(0, 0, 0, 0.4);
   z-index: 250; /* debajo del sidebar pero encima de main */
   pointer-events: auto;
+
+  &.show {
+    display: block;
+  }
 }
 
-/* ==============================
-   INICIO
-============================== */
+/* Animación hamburguesa -> X */
+.toggle-btn-desktop.active .bar:nth-child(1) {
+  transform: rotate(45deg) translateY(6px);
+}
+.toggle-btn-desktop.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.toggle-btn-desktop.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translateY(-6px);
+}
+
+/* INICIO */
 .inicio-container {
   flex: 1;
   display: flex;
@@ -270,44 +283,34 @@
   overflow: hidden;
   transition: all 0.3s ease;
   background: #ffffff;
-  margin-top: 60px; /* espacio toolbar */
+  margin-top: 60px;
   text-align: center;
+
+  h2 {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 600px;
+    line-height: 1.6;
+  }
 }
 
-.inicio-container h2 {
-  color: #2563eb;
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.inicio-container p {
-  color: #555;
-  font-size: 1.1rem;
-  max-width: 600px;
-  line-height: 1.6;
-}
-
-/* ==============================
-   ANIMACIONES
-============================== */
+/* ANIMACIONES */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ==============================
-   RESPONSIVE
-============================== */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .sidebar {
-    transform: translateX(0); /* tablet siempre visible */
+    transform: translateX(-100%);
     width: 220px;
   }
 }
@@ -319,40 +322,26 @@
   }
 
   .sidebar.open + .sidebar-overlay {
-    display: block; /* overlay solo visible cuando sidebar abierto */
+    display: block;
   }
 
   .close-sidebar-btn {
     display: block;
   }
 
-  .global-toggle-btn {
-    display: flex;
-  }
-
   .inicio-container {
     padding: 1rem;
-  }
 
-  .inicio-container h2 {
-    font-size: 1.5rem;
-  }
-
-  .inicio-container p {
-    font-size: 0.95rem;
+    h2 { font-size: 1.5rem; }
+    p { font-size: 0.95rem; }
   }
 }
 
 @media (max-width: 480px) {
   .inicio-container {
     padding: 0.8rem;
-  }
 
-  .inicio-container h2 {
-    font-size: 1.3rem;
-  }
-
-  .inicio-container p {
-    font-size: 0.9rem;
+    h2 { font-size: 1.3rem; }
+    p { font-size: 0.9rem; }
   }
 }

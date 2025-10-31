@@ -1,7 +1,7 @@
 <header class="toolbar">
   <div class="toolbar-left">
-    <!-- Botón hamburguesa tablet/laptop mediana -->
-    <button class="toggle-btn-desktop" (click)="toggleMenu()" aria-label="Menú">
+    <!-- Botón hamburguesa SIEMPRE visible -->
+    <button class="toggle-btn-desktop" (click)="toggleSidebar()" [class.active]="menuVisible" aria-label="Menú">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
@@ -18,22 +18,17 @@
   </div>
 </header>
 
-<!-- Sidebar -->
-<div class="sidebar" [class.open]="menuVisible">
-  <!-- Overlay tablet/móvil -->
-  <div class="sidebar-overlay" (click)="closeSidebar()"></div>
-
+<!-- SIDEBAR -->
+<nav class="sidebar" [class.open]="menuVisible">
   <div class="sidebar-content">
-    <!-- Header Sidebar -->
     <div class="sidebar-header">
-      <img src="autismo_mochis.png" alt="Autismo Mochis" class="sidebar-logo">
+      <img src="autismo_mochis.png" alt="Autismo Mochis" class="sidebar-logo" />
       <span class="sidebar-title">Coordinador</span>
-      <!-- Solo visible móvil -->
-      <button class="close-sidebar-btn" (click)="closeSidebar()">×</button>
+      <button class="close-sidebar-btn" (click)="closeSidebar()">✕</button>
     </div>
 
     <div class="sidebar-scroll">
-      <!-- Panel Principal -->
+      <!-- Panel principal -->
       <div class="sidebar-section" [class.open]="panelPrincipalOpen">
         <div class="section-title" (click)="panelPrincipalOpen = !panelPrincipalOpen">
           Panel principal <span>{{ panelPrincipalOpen ? '▲' : '▼' }}</span>
@@ -45,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Gestión Clínica -->
+      <!-- Gestión clínica -->
       <div class="sidebar-section" [class.open]="gestionClinicaOpen">
         <div class="section-title" (click)="gestionClinicaOpen = !gestionClinicaOpen">
           Gestión clínica <span>{{ gestionClinicaOpen ? '▲' : '▼' }}</span>
@@ -79,11 +74,7 @@
       <a href="#" class="logout">🚪 Cerrar sesión</a>
     </div>
   </div>
-</div>
+</nav>
 
-<!-- Botón global móvil (<768px) -->
-<!-- <button class="global-toggle-btn" (click)="toggleMenu()" aria-label="Menú móvil">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</button> -->
+<!-- Overlay móvil -->
+<div class="sidebar-overlay" [class.show]="menuVisible" (click)="closeSidebar()"></div>

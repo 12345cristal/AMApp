@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../components/sidebar/sidebar';
@@ -11,18 +11,9 @@ import { SidebarComponent } from '../components/sidebar/sidebar';
   styleUrls: ['./layout.scss']
 })
 export class LayoutComponent {
-  sidebarOpen = true;
+  sidebarOpen = window.innerWidth > 1024;
 
-  constructor() {
-    this.checkScreenWidth();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.checkScreenWidth();
-  }
-
-  private checkScreenWidth() {
-    this.sidebarOpen = window.innerWidth > 768;
+  onSidebarToggled(state: boolean) {
+    this.sidebarOpen = state;
   }
 }

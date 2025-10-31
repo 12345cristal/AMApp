@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,32 +6,36 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./sidebar.scss']
 })
 export class SidebarComponent {
-  menuVisible = false;
+  menuVisible = window.innerWidth > 1024; // visible por defecto en desktop
   panelPrincipalOpen = false;
   gestionClinicaOpen = false;
   administracionOpen = false;
 
-  // Alterna sidebar
-  toggleMenu() {
+  @Output() sidebarToggled = new EventEmitter<boolean>();
+
+  toggleSidebar() {
     this.menuVisible = !this.menuVisible;
+    this.sidebarToggled.emit(this.menuVisible);
   }
 
-  // Abre sidebar
   openSidebar() {
     this.menuVisible = true;
+    this.sidebarToggled.emit(true);
   }
 
-  // Cierra sidebar
   closeSidebar() {
     this.menuVisible = false;
+    this.sidebarToggled.emit(false);
   }
 
-  // Cierra sidebar automáticamente si se redimensiona a desktop grande
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    const width = (event.target as Window).innerWidth;
- if (width > 1024) this.menuVisible = true; // desktop grande
-if (width <= 1024 && width >= 768) this.menuVisible = true; // tablet/laptop mediana
-if (width < 768) this.menuVisible = false; // móvil
- }
+  @HostListener('window:resize')
+  onResize() {
+    if (window.innerWidth > 1024) {
+      // Desktop: sidebar siempre visible
+      this.menuVisible = true;
+    } else {
+      // Tablet/Móvil: sidebar oculto al cargar
+      this.menuVisible = false;
+    }
+  }
 }
