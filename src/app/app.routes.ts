@@ -2,7 +2,7 @@
 import { Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing/landing';
 import { HEADER_ROUTES } from './Rutas/header_routes';
-import { COORDINADOR_ROUTES } from './coordinador/routes-coord';
+import { COORDINADOR_ROUTES } from './Rutas/routes-coord';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },

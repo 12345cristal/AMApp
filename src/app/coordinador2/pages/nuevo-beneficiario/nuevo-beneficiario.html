@@ -1,0 +1,37 @@
+<div class="nuevo-beneficiario">
+  <h2>Nuevo Beneficiario</h2>
+  
+  <div class="form-section">
+    <h3>Información del Beneficiario</h3>
+    <input type="text" placeholder="Nombre completo" [value]="nombre()" (input)="nombre.set($any($event.target).value)">
+    <input type="date" placeholder="Fecha de nacimiento" [value]="fechaNacimiento()" (input)="fechaNacimiento.set($any($event.target).value)">
+    <select [value]="genero()" (change)="genero.set($any($event.target).value)">
+      <option value="">Seleccione género</option>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+    </select>
+    <input type="text" placeholder="Diagnóstico" [value]="diagnostico()" (input)="diagnostico.set($any($event.target).value)">
+    <input type="text" placeholder="Alergias" [value]="alergias()" (input)="alergias.set($any($event.target).value)">
+    <input type="text" placeholder="Medicamentos" [value]="medicamentos()" (input)="medicamentos.set($any($event.target).value)">
+  </div>
+
+  <div class="form-section">
+    <h3>Información del Tutor</h3>
+    <input type="text" placeholder="Nombre del tutor" [value]="tutor()" (input)="tutor.set($any($event.target).value)">
+    <input type="tel" placeholder="Teléfono" [value]="telefono()" (input)="telefono.set($any($event.target).value)">
+    <input type="email" placeholder="Correo electrónico" [value]="correo()" (input)="correo.set($any($event.target).value)">
+    <input type="text" placeholder="Dirección" [value]="direccion()" (input)="direccion.set($any($event.target).value)">
+  </div>
+
+  <div class="form-section">
+    <h3>Documentación</h3>
+    <label>Acta de nacimiento</label>
+    <input type="file" (change)="manejarArchivo($event, actaNacimiento)">
+    <label>INE del tutor</label>
+    <input type="file" (change)="manejarArchivo($event, ineTutor)">
+    <label>Comprobante de domicilio</label>
+    <input type="file" (change)="manejarArchivo($event, comprobanteDomicilio)">
+  </div>
+
+  <button (click)="enviar()">Registrar Beneficiario</button>
+</div>
